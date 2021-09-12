@@ -35,37 +35,30 @@ float calcularMultiplicacion(float a, float b)
 float calcularDivision(float a, float b)
 {
 	float resultado;
-	resultado = 0;
+	float division;
+
 
 	if(b != 0)
 	{
-		float division;
 		division = a / b;
 		resultado = division;
 	}
-
 
 	return resultado;
 }
 
 float calcularFactorial(float a)
 {
-	int contador;
-	float factorial;
-	int multiplicador;
 
+	float b;
+	float fact = 1;
 
-	multiplicador=1;
-	factorial=1;
-
-	for(contador=0;contador<a;contador++)
+	for (b = a; b > 1; b--)
 	{
-		factorial=factorial*multiplicador;
-
-		multiplicador++;
+		fact = fact * b;
 	}
 
-	return factorial;
+	return fact;
 }
 
 float pedirNumero(char mensaje[], float numero )

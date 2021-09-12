@@ -44,6 +44,7 @@ int main(void) {
 	float factorial;
 	float factorial2;
 	int opcion;
+	int banderaCalculo = 0;
 
 	do
 	{
@@ -64,7 +65,6 @@ int main(void) {
 		while(opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5)
 		{
 			printf("Error, debe ingresar alguna de las opciones enumeradas\n");
-			printf("Presione cualquier tecla para continuar");
 			scanf("%d", &opcion);
 		}
 
@@ -72,14 +72,15 @@ int main(void) {
 		{
 			case 1:
 				x = pedirNumero("Ingresar el primer operando\n", x);
-				printf("Primer operando: %.2f\n", x);
+				printf("Usted ha ingresado el primer operando: %.2f\n", x);
 				bandera++;
 			break;
 			case 2:
 				if(bandera > 0)
 				{
 					y = pedirNumero("Ingresar el segundo operando\n", y);
-					printf("Segundo operando: %.2f\n", y);
+					printf("Uted ha ingresado el segundo operando: %.2f\n", y);
+					printf("Operandos a utilizar: %.2f y %.2f\n", x,y);
 					bandera++;
 				}
 				else
@@ -100,34 +101,73 @@ int main(void) {
 
 					multiplicacion = calcularMultiplicacion(x,y);
 
-					division = calcularDivision(x,y);
+					if(y != 0)
+					{
+						division = calcularDivision(x,y);
+					}
 
-					factorial = calcularFactorial(x);
+					if(x> -1)
+					{
+						factorial = calcularFactorial(x);
+					}
 
-					factorial2 = calcularFactorial(y);
+					if(y>-1)
+					{
+						factorial2 = calcularFactorial(y);
+					}
+					banderaCalculo = 1;
 				}
 				else
 				{
-					printf("Error, Primero debe ingresar los operandos. Opcion 1 y 2.\n");
-					printf("Presione cualquier tecla para continuar");
-					scanf("%d", &opcion);
+					printf("Error, Primero debe ingresar los operandos\n");
 				}
 			break;
 			case 4:
+				if(bandera >1 && banderaCalculo >0)
+				{
+						printf("El resultado de %.2f + %.2f es: %.2f\n",x, y,  suma);
+						printf("El resultado de %.2f - %.2f es: %.2f\n",x, y, resta);
+						printf("El resultado de %.2f * %.2f es : %.2f\n",x, y, multiplicacion);
+						if(y == 0){
+							printf("Error en la division. No se puede dividir por 0\n");
+						}
+						else
+						{
+							printf("El resultado de %.4f / %.4f es: %.4f\n",x, y, division);
 
-				printf("El resultado de %.2f + %.2f es: %.2f\n",x, y,  suma);
-				printf("El resultado de %.2f - %.2f es: %.2f\n",x, y, resta);
-				printf("El resultado de %.2f * %.2f es : %.2f\n",x, y, multiplicacion);
-				if(division == 0){
-					printf("Error en la division. No se puede dividir por 0\n");
-				}
+						}
+
+						if(x > -1 && factorial >0)
+						{
+							printf("El factorial %.2f es: %.2f\n",x, factorial);
+						}
+						else
+						{
+								printf("No se puede calcular el factorial de un numero menor a 0\n");
+						}
+
+						if(y > -1 && factorial > 0)
+						{
+							printf("El factorial del %.2f es: %.2f\n",y, factorial2);
+						}
+						else
+						{
+								printf("No se puede calcular el factorial de un numero menor a 0\n");					}
+						}
 				else
 				{
-					printf("El resultado de %.2f / %.2f es: %.2f\n",x, y, division);
-
+					if(bandera < 1)
+					{
+					printf("Error, primero debe ingresar los operandos\n");
+					}
+					else
+					{
+						if(banderaCalculo == 0)
+						{
+							printf("Error, primero debe realizar los calculos\n");
+						}
+					}
 				}
-				printf("El factorial %.2f es: %.2f\n",x, factorial);
-				printf("El factorial del %.2f es: %.2f\n",y, factorial2);
 			break;
 
 			case 5:
