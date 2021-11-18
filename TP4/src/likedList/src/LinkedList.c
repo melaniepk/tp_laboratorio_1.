@@ -105,20 +105,14 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     	{
     		newNode->pElement = pElement;
     		newNode->pNextNode = getNode(this, nodeIndex);
-    		//newNode->pNextNode = NULL;
     		if(nodeIndex == 0)
     		{
-    			//newNode->pNextNode = this->pFirstNode;
     			this->pFirstNode = newNode;
     		}
     		else
     		{
-    			//newNode->pNextNode = getNode(this,nodeIndex);
     			previousNode = getNode(this,nodeIndex-1);
     			previousNode->pNextNode = newNode;
-
-
-    			//(getNode(this,nodeIndex-1))->pNextNode = newNode;
     		}
     		returnAux = 0;
     		this->size++;
@@ -235,7 +229,6 @@ int ll_remove(LinkedList* this,int index)
     	{
     		if(index == 0)
 			{
-				//auxNode = this->pFirstNode;//guardo el nodo a eliminar en el primer nodo de la lista
 				this->pFirstNode = auxNode->pNextNode;// cambio el puntero del primer nodo de la lista para que apunte al next node del nodo a eliminar, que como
 			}                                          // es el primero es 0
 			else
@@ -243,9 +236,7 @@ int ll_remove(LinkedList* this,int index)
 				nodoAnterior = getNode(this,index-1);
 				if(nodoAnterior != NULL)
 				{
-					//nodoAnterior = getNode(this,index-1); // consigo el nodo anterior al nodo a eliminar
 					nodoAnterior->pNextNode = auxNode->pNextNode;//apunto el next node del nodo anterior al next node del nodo a eliminar
-					//auxNode = nodoAnterior->pNextNode;// guardo el nodo a eliminar en el next node del nodo anterior
 
 				}
 			}
